@@ -38,13 +38,21 @@ This is the traditional RAG path: semantic retrieval with embeddings and a vecto
 Answer these before you start coding:
 
 1. Which retrieval strategy did you choose, and why?
+Answer: Strategy A, seems it would save more token.
 2. What is the retrieval unit in your design: file, section, or chunk?
+Answer: chunk.
 3. How do you decide what goes into the prompt?
+Answer: Search for headings h1 to h6 and find chunk that closely match the user's semantics (vector).
 4. How do you cite sources so users can inspect the original Markdown?
+Answer: chunking and storing Markdown text into the vector database, record the original file path and section title anchor in the metadata.
 5. What should happen when retrieval finds weak or irrelevant results?
+Answer: dynamic score thresholding, if the score too low, then the bot would not send requrest to LLM and return the canned message. If the score falls into a gray area,  and let the LLM generate some question for use r to enhance the knowledge base.
 6. When would you switch from Markdown KB to Vector RAG?
+Answer: too many files in the `docs/`, user query failing to exact-match technical terms in the documents, user's question requires aggregating across many different files.
 7. When would you switch from Vector RAG back to a Markdown index?
+Answer: user's question require deterministic precision.
 8. If the knowledge base grows from 10 files to 100,000 files, what changes?
+Answer: the system transform into a qa bot base on enterprise search architecture. Hybrid search (BM25 and vector search) and AI memory system infra might increase the efficiency for search the correct response.
 
 ## Verification
 

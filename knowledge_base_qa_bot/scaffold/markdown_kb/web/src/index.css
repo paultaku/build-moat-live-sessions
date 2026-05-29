@@ -1,0 +1,16 @@
+@import "@heroui/styles/css";
+
+/* HeroUI ships its own Tailwind import from inside node_modules, which Tailwind
+   ignores for automatic content detection. Point it at our source explicitly. */
+@source "../index.html";
+@source "./**/*.{ts,tsx}";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
